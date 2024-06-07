@@ -1,5 +1,6 @@
-import styles from "./Loginform.module.css"; // Importa el módulo CSS y asigna a 'styles'
+import styles from "./Loginform.module.css";
 import { Formik, FormikHelpers, FormikProps } from "formik";
+import { IoIosAlert } from "react-icons/io";
 
 export function Loginform() {
   interface FormValues {
@@ -50,6 +51,10 @@ export function Loginform() {
 
           return (
             <form onSubmit={handleSubmit}>
+              <style>
+                @import
+                url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+              </style>
               <input
                 placeholder="Correo"
                 className={styles.input}
@@ -59,7 +64,14 @@ export function Loginform() {
                 onBlur={handleBlur}
                 value={values.email}
               />
-              <div>{errors.email && touched.email && errors.email}</div>
+              <div className={styles.errorMessage}>
+                {errors.email && touched.email && (
+                  <>
+                    <IoIosAlert className={styles.icon} />
+                    {errors.email}
+                  </>
+                )}
+              </div>
               <input
                 placeholder="Contraseña"
                 className={styles.input}
@@ -69,15 +81,20 @@ export function Loginform() {
                 onBlur={handleBlur}
                 value={values.password}
               />
-              <div>
-                {errors.password && touched.password && errors.password}
+              <div className={styles.errorMessage}>
+                {errors.password && touched.password && (
+                  <>
+                    <IoIosAlert className={styles.icon} />
+                    {errors.password}
+                  </>
+                )}
               </div>
               <button
                 className={styles.button}
                 type="submit"
                 disabled={isSubmitting}
               >
-                Submit
+                Ingresar
               </button>
             </form>
           );
