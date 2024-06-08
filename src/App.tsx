@@ -1,14 +1,8 @@
 import "./App.css";
-import { Loginform } from "./components/Loginform";
-import { Cardlogin } from "./components/Cardlogin";
+import { Login } from "./components/views/Login";
 
 function App() {
-  return (
-    <div>
-      <Loginform />
-      <Cardlogin />
-    </div>
-  );
+  return <Login />;
 }
 
 export default App;
