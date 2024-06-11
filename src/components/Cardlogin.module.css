@@ -1,6 +1,6 @@
 .img {
-  height: 1000px;
-  width: 1100px;
+  height: 700px;
+  width: 800px;
 }
 .article {
   position: relative;
@@ -9,10 +9,10 @@
 
 .title {
   color: white;
-  font-size: 130px;
+  font-size: 80px;
   position: absolute;
-  margin-top: -140px;
-  margin-left: 45px;
+  margin-top: -130px;
+  margin-left: 20px;
   font-family: "Lato", sans-serif; /* Usa la fuente importada */
   text-shadow: 7px 2px 4px rgba(125, 125, 125, 0.5);
 }
