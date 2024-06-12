@@ -1,7 +1,7 @@
 import styles from "./Loginform.module.css";
 import { Formik, FormikHelpers, FormikProps } from "formik";
 import { IoIosAlert } from "react-icons/io";
-import { loginApi } from "../services /APIService";
+import { loginApi } from "../services/APIService";
 
 export function Loginform() {
   interface FormValues {
