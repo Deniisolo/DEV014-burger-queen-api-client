@@ -1,6 +1,7 @@
 import styles from "./Loginform.module.css";
 import { Formik, FormikHelpers, FormikProps } from "formik";
 import { IoIosAlert } from "react-icons/io";
+import { loginApi } from "../services /APIService";
 
 export function Loginform() {
   interface FormValues {
@@ -28,14 +29,19 @@ export function Loginform() {
           }
           return errors;
         }}
-        onSubmit={(
+        onSubmit={async (
           values: FormValues,
-          { setSubmitting }: FormikHelpers<FormValues>
+          { setSubmitting, setFieldError }: FormikHelpers<FormValues>
         ) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
+          try {
+            const data = await loginApi(values.email, values.password);
+            localStorage.setItem("token", data.token);
+            window.location.href = "/waiterview";
+          } catch (error) {
+            setFieldError("email", "Invalid email or password");
+          } finally {
             setSubmitting(false);
-          }, 400);
+          }
         }}
       >
         {(props: FormikProps<FormValues>) => {
