@@ -1,0 +1,26 @@
+.section {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.sectionOne {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+.sectionTwo {
+  justify-content: center;
+}
+.icon {
+  height: 60px;
+  width: 60px;
+}
+.h3 {
+  font-size: 30px;
+  font-weight: 400;
+}
+.p {
+  font-size: 20px;
+  font-weight: 300;
+}

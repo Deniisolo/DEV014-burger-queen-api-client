@@ -1,0 +1,18 @@
+.containerOrder {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+.containerOrderChild {
+  display: flex;
+  flex-flow: row;
+  gap: 10px;
+}
+.total {
+  display: flex;
+}
+.icon {
+  height: 20px;
+  width: 20px;
+}

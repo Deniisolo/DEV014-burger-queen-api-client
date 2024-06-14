@@ -1,0 +1,21 @@
+.containerCardMenuFather {
+  display: flex;
+  flex-flow: column;
+  height: 100px;
+  width: 300px;
+}
+.icon {
+  height: 20px;
+  width: 20px;
+}
+.containerCardMenu {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+button {
+  border: none;
+  background-color: transparent;
+}
