@@ -2,6 +2,7 @@ import styles from "./Loginform.module.css";
 import { Formik, FormikHelpers, FormikProps } from "formik";
 import { IoIosAlert } from "react-icons/io";
 import { loginApi } from "../services/APIService";
+import { useNavigate } from "react-router-dom";
 
 export function Loginform() {
   interface FormValues {
@@ -13,7 +14,7 @@ export function Loginform() {
     email?: string;
     password?: string;
   }
-
+  const navigate = useNavigate();
   return (
     <section className={styles.section}>
       <Formik
@@ -36,7 +37,13 @@ export function Loginform() {
           try {
             const data = await loginApi(values.email, values.password);
             localStorage.setItem("token", data.token);
-            window.location.href = "/waiterview";
+            if (data.user.role === "chef") {
+              navigate("/chefview");
+            } else if (data.user.role === "waiter") {
+              navigate("/waiterview");
+            } else {
+              console.error("Unexpected role:", data.user.role);
+            }
           } catch (error) {
             setFieldError("email", "Invalid email or password");
           } finally {
