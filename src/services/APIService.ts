@@ -1,3 +1,4 @@
+// -------------------------lOGIN--------------------------
 export const loginApi = async (email: string, password: string) => {
   try {
     const response = await fetch("http://localhost:8080/login", {
@@ -7,7 +8,6 @@ export const loginApi = async (email: string, password: string) => {
       },
       body: JSON.stringify({ email, password }),
     });
-    console.log(response);
 
     if (!response.ok) {
       const errorDetail = await response.json();
@@ -22,5 +22,35 @@ export const loginApi = async (email: string, password: string) => {
     } else {
       throw new Error("Error logging in: An unknown error occurred");
     }
+  }
+};
+// -------------------------PRODUCTS--------------------------
+export interface Products {
+  id: number;
+  name: string;
+  price: number;
+  image: string;
+  type: string;
+  dateEntry: string;
+}
+
+export const ProductsApi = async (): Promise<Products[]> => {
+  try {
+    const response = await fetch(`http://localhost:8080/products`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const products: Products[] = await response.json();
+    return products;
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    throw error;
   }
 };
