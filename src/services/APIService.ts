@@ -1,3 +1,4 @@
+// -------------------------lOGIN--------------------------
 export const loginApi = async (email: string, password: string) => {
   try {
     const response = await fetch("http://localhost:8080/login", {
@@ -7,7 +8,6 @@ export const loginApi = async (email: string, password: string) => {
       },
       body: JSON.stringify({ email, password }),
     });
-    console.log(response);
 
     if (!response.ok) {
       const errorDetail = await response.json();
@@ -22,5 +22,37 @@ export const loginApi = async (email: string, password: string) => {
     } else {
       throw new Error("Error logging in: An unknown error occurred");
     }
+  }
+};
+// -------------------------PRODUCTS--------------------------
+export interface Products {
+  id: number;
+  name: string;
+  price: number;
+  image: string;
+  type: string;
+  dateEntry: string;
+}
+
+export const ProductsApi = async (): Promise<Products[]> => {
+  try {
+    const response = await fetch(`http://localhost:8080/products`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQHN5c3RlcnMueHl6IiwiaWF0IjoxNzE5MzIxNTE5LCJleHAiOjE3MTkzMjUxMTksInN1YiI6IjEifQ.Hfq0SYJvWkRgjI4FnvEfDMac6nLOzxeHUf2S8iPROrk",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const products: Products[] = await response.json();
+    return products;
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    throw error;
   }
 };

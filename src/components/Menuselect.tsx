@@ -1,16 +1,26 @@
 import styles from "./Menuselect.module.css";
-export function Menuselect() {
+import React from "react";
+
+interface MenuselectProps {
+  setselectOn: (value: string) => void;
+}
+
+export const Menuselect: React.FC<MenuselectProps> = ({ setselectOn }) => {
+  const handleMenuChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedMenu = event.target.value;
+    setselectOn(selectedMenu);
+  };
+
   return (
-    <select className={styles.select} name="menu" id="">
-      <style>
-        @import
-        url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
-      </style>
+    <select className={styles.select} name="menu" onChange={handleMenuChange}>
       <option className={styles.option} value="">
         MENU
       </option>
-      <option value="">1</option>
-      <option value="">2</option>
+      <option value="beverages">Beverages</option>
+      <option value="breakfast">Breakfast</option>
+      <option value="lunch">Lunch</option>
+      <option value="combos">Combos</option>
+      <option value="sides">Sides</option>
     </select>
   );
-}
+};

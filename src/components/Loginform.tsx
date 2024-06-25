@@ -9,7 +9,6 @@ export function Loginform() {
     email: string;
     password: string;
   }
-
   interface Errors {
     email?: string;
     password?: string;
