@@ -40,6 +40,8 @@ export const ProductsApi = async (): Promise<Products[]> => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQHN5c3RlcnMueHl6IiwiaWF0IjoxNzE5MzIxNTE5LCJleHAiOjE3MTkzMjUxMTksInN1YiI6IjEifQ.Hfq0SYJvWkRgjI4FnvEfDMac6nLOzxeHUf2S8iPROrk",
       },
     });
 

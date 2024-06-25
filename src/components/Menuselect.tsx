@@ -1,9 +1,14 @@
 import styles from "./Menuselect.module.css";
+import React from "react";
 
-export function Menuselect() {
+interface MenuselectProps {
+  setselectOn: (value: string) => void;
+}
+
+export const Menuselect: React.FC<MenuselectProps> = ({ setselectOn }) => {
   const handleMenuChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedMenu = event.target.value;
-    console.log("Menu seleccionado:", selectedMenu);
+    setselectOn(selectedMenu);
   };
 
   return (
@@ -11,8 +16,11 @@ export function Menuselect() {
       <option className={styles.option} value="">
         MENU
       </option>
-      <option value="breakfast">Desayuno</option>
-      <option value="lunch">Almuerzo</option>
+      <option value="beverages">Beverages</option>
+      <option value="breakfast">Breakfast</option>
+      <option value="lunch">Lunch</option>
+      <option value="combos">Combos</option>
+      <option value="sides">Sides</option>
     </select>
   );
-}
+};
