@@ -3,7 +3,7 @@ import { Formik, FormikHelpers, FormikProps } from "formik";
 import { IoIosAlert } from "react-icons/io";
 import { loginApi } from "../services/APIService";
 import { useNavigate } from "react-router-dom";
-
+import { saveLocalStorage } from "../utils/localstorage";
 export function Loginform() {
   interface FormValues {
     email: string;
@@ -35,7 +35,7 @@ export function Loginform() {
         ) => {
           try {
             const data = await loginApi(values.email, values.password);
-            localStorage.setItem("token", data.token);
+            saveLocalStorage<string>("token", data.accessToken);
             if (data.user.role === "chef") {
               navigate("/chefview");
             } else if (data.user.role === "waiter") {

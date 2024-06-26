@@ -1,3 +1,4 @@
+import { loadLocalStorage } from "../utils/localstorage";
 // -------------------------lOGIN--------------------------
 export const loginApi = async (email: string, password: string) => {
   try {
@@ -36,12 +37,12 @@ export interface Products {
 
 export const ProductsApi = async (): Promise<Products[]> => {
   try {
+    const token = loadLocalStorage<string>("token");
     const response = await fetch(`http://localhost:8080/products`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQHN5c3RlcnMueHl6IiwiaWF0IjoxNzE5MzIxNTE5LCJleHAiOjE3MTkzMjUxMTksInN1YiI6IjEifQ.Hfq0SYJvWkRgjI4FnvEfDMac6nLOzxeHUf2S8iPROrk",
+        authorization: "Bearer " + token,
       },
     });
 

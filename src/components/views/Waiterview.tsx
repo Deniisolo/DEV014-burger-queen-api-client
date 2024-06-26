@@ -6,9 +6,16 @@ import { Menucard } from "../Menucard";
 import { Order } from "../Order";
 import { Totalorden } from "../Totalorden";
 
+interface orderitem {
+  id: number;
+  name: string;
+  price: number;
+  quantity: number;
+}
+
 export const Waiterview: React.FC = () => {
   const [select, setselectOn] = useState<string>("");
-
+  const [resume, setResume] = useState<orderitem[]>([]);
   return (
     <>
       <style>
@@ -22,7 +29,7 @@ export const Waiterview: React.FC = () => {
       <main>
         <Roleanduser />
         <Menuselect setselectOn={setselectOn} />
-        <Menucard select={select} />
+        <Menucard select={select} setResume={setResume} />
         <Order />
         <Totalorden />
       </main>
