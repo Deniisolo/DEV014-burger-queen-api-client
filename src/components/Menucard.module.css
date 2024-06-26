@@ -3,6 +3,7 @@
   flex-flow: column;
   height: 100px;
   width: 300px;
+  margin-left: 100px;
 }
 .icon {
   height: 20px;
