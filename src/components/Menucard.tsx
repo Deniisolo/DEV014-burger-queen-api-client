@@ -9,11 +9,12 @@ interface orderitem {
   price: number;
   quantity: number;
 }
+
 export function Menucard(props: {
   select: string;
-  setResume: (value: orderitem[]) => void;
+  setproducts: (callback: (prevProducts: orderitem[]) => orderitem[]) => void;
 }) {
-  const [products, setProducts] = useState<any[]>([]);
+  const [productsFilter, setpruductsfilter] = useState<any[]>([]);
 
   useEffect(() => {
     const getProduct = async () => {
@@ -25,7 +26,7 @@ export function Menucard(props: {
               product.type.toLowerCase() === props.select.toLowerCase()
           )
         : [];
-      setProducts(filteredProducts);
+      setpruductsfilter(filteredProducts);
     };
 
     getProduct();
@@ -33,11 +34,15 @@ export function Menucard(props: {
 
   return (
     <div className={styles.containerCardMenuFather}>
-      {products.map((product) => (
+      {productsFilter.map((product) => (
         <div key={product.id} className={styles.containerCardMenu}>
           <p className={styles.food}>{product.name}</p>
           <p className={styles.price}>${product.price}</p>
-          <button onClick={() => {}}>
+          <button
+            onClick={() => {
+              props.setproducts((prevProducts) => [...prevProducts, product]);
+            }}
+          >
             <FaCirclePlus className={styles.icon} />
           </button>
         </div>

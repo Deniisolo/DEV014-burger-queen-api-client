@@ -15,7 +15,12 @@ interface orderitem {
 
 export const Waiterview: React.FC = () => {
   const [select, setselectOn] = useState<string>("");
-  const [resume, setResume] = useState<orderitem[]>([]);
+  // const [resume, setResume] = useState<orderitem[]>([]);
+
+  const [products, setproducts] = useState([
+    { name: "papa", price: "2000" },
+    { name: "arroz", price: "50" },
+  ]);
   return (
     <>
       <style>
@@ -29,8 +34,8 @@ export const Waiterview: React.FC = () => {
       <main>
         <Roleanduser />
         <Menuselect setselectOn={setselectOn} />
-        <Menucard select={select} setResume={setResume} />
-        <Order />
+        <Menucard select={select} setproducts={setproducts} />
+        <Order products={products} />
         <Totalorden />
       </main>
     </>
