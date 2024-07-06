@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import styles from "./Waiterview.module.css";
 import { Navbar } from "../Navbar";
 import { Roleanduser } from "../Roleanduser";
 import { Menuselect } from "../Menuselect";
@@ -56,7 +57,7 @@ export const Waiterview: React.FC = () => {
       <header>
         <Navbar />
       </header>
-      <main>
+      <main className={styles.main}>
         <Roleanduser />
         <Menuselect setselectOn={setselectOn} />
         <Menucard select={select} addProduct={addProduct} />

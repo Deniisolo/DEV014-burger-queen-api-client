@@ -24,7 +24,7 @@ export function Order({ products, removeProduct, updateQuantity }: OrderProps) {
       {products.map((product) => (
         <div key={product.id} className={styles.containerOrderChild}>
           <p>{product.name}</p>
-          <p>{product.quantity}</p> {/* Mostrar la cantidad de productos */}
+          <p>{product.quantity}</p> {}
           <p>${product.price}</p>
           <button
             onClick={() => updateQuantity(product.id, product.quantity - 1)}
