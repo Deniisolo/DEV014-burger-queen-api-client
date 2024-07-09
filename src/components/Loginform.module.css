@@ -8,26 +8,25 @@
   border-bottom: 1px solid black;
   outline: none;
   height: 62px;
-  width: 400px;
-  font-size: 24px;
+  width: 200px;
+  font-size: 15px;
   font-weight: 400;
 }
 
 .button {
   background-color: #67a50d;
   height: 46px;
-  width: 400px;
+  width: 200px;
   border: none;
   color: aliceblue;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 30px;
+  font-size: 20px;
   cursor: pointer;
   border-radius: 8px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   font-weight: 900;
-
   margin-top: 60px;
 }
 
@@ -37,12 +36,12 @@
 
 .section {
   background-color: rgb(255, 255, 255);
-  width: 500px;
-  height: 550px;
+  width: 270px;
+  height: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: -120px;
+  margin: -30px;
   box-shadow: 10px 20px 20px rgba(0, 0, 0, 0.2);
 }
 
