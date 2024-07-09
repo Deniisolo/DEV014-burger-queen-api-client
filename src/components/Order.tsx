@@ -28,6 +28,10 @@ export function Order({ products, removeProduct, updateQuantity }: OrderProps) {
   });
   return (
     <div className={styles.containerOrder}>
+      <style>
+        @import
+        url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+      </style>
       <div>
         <h4>Resumen del pedido</h4>
       </div>
@@ -48,7 +52,7 @@ export function Order({ products, removeProduct, updateQuantity }: OrderProps) {
         </div>
       ))}
       <div>
-        <p> total: ${totalOrder}</p>
+        <p className={styles.totalOrder}> Total: ${totalOrder}</p>
       </div>
     </div>
   );

@@ -5,7 +5,6 @@ import { Roleanduser } from "../Roleanduser";
 import { Menuselect } from "../Menuselect";
 import { Menucard } from "../Menucard";
 import { Order } from "../Order";
-import { Totalorden } from "../Totalorden";
 
 interface Products {
   id: number;
@@ -66,7 +65,6 @@ export const Waiterview: React.FC = () => {
           removeProduct={removeProduct}
           updateQuantity={updateQuantity}
         />
-        <Totalorden />
       </main>
     </>
   );
