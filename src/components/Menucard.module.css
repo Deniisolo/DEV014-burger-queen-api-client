@@ -2,8 +2,9 @@
   display: flex;
   flex-flow: column;
   height: 100px;
-  width: 300px;
-  margin-left: 100px;
+  width: 250px;
+  margin-left: 40px;
+  z-index: 1;
 }
 .icon {
   height: 20px;
@@ -14,7 +15,7 @@
   flex-flow: row;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
 }
 button {
   border: none;
