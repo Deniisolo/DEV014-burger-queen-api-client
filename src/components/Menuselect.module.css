@@ -1,7 +1,7 @@
 .select {
   background-color: #fed11e;
   height: 40px;
-  width: 300px;
+  width: 250px;
   border: none;
   border-radius: 15px;
   font-family: "Lato", sans-serif;
@@ -11,5 +11,6 @@
   padding: 10px;
   display: block;
   text-align: center;
-  margin-left: 100px;
+  margin-left: 40px;
+  z-index: 2;
 }
