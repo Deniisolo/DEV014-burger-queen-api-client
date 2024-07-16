@@ -71,7 +71,6 @@ export interface Orders {
 export const OrdersApi = async (): Promise<Orders[]> => {
   try {
     const token = loadLocalStorage<string>("token");
-    console.log(token);
     const response = await fetch(`http://localhost:8080/orders`, {
       method: "GET",
       headers: {

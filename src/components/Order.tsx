@@ -2,6 +2,9 @@ import styles from "./Order.module.css";
 import { GrSubtractCircle } from "react-icons/gr";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { useEffect, useState } from "react";
+import { PiChefHat } from "react-icons/pi";
+import { GrHistory } from "react-icons/gr";
+import { useNavigate } from "react-router-dom";
 
 interface OrderItem {
   id: number;
@@ -18,7 +21,7 @@ interface OrderProps {
 
 export function Order({ products, removeProduct, updateQuantity }: OrderProps) {
   const [totalOrder, setTotalOrder] = useState<number>();
-
+  const navigate = useNavigate();
   useEffect(() => {
     let totalOrder = 0;
     for (const totalProduct of products) {
@@ -51,8 +54,21 @@ export function Order({ products, removeProduct, updateQuantity }: OrderProps) {
           </button>
         </div>
       ))}
-      <div>
+      <div className={styles.containerTotalOrder}>
         <p className={styles.totalOrder}> Total: ${totalOrder}</p>
+        <button className={styles.buttonSendOrden}>
+          <PiChefHat className={styles.iconSendButton} />
+          Enviar a cocina
+        </button>
+        <button
+          className={styles.buttonhistorialOrder}
+          onClick={() => {
+            navigate("/orderview");
+          }}
+        >
+          <GrHistory className={styles.iconHistorialOrder} />
+          Historial de pedidos
+        </button>
       </div>
     </div>
   );

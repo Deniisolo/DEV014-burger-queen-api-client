@@ -3,7 +3,7 @@
   flex-flow: column;
   justify-content: start;
   margin-top: -120px;
-  margin-right: 20px;
+  margin-right: 40px;
   align-items: end;
   height: 800px;
   width: auto;
@@ -20,10 +20,47 @@
   height: 20px;
   width: 20px;
 }
+.containerTotalOrder {
+  display: flex;
+  flex-flow: column;
+}
 .totalOrder {
   color: black;
   font-family: "Lato", sans-serif;
   font-weight: 900;
   font-style: normal;
   font-size: 20px;
+}
+.iconSendButton {
+  height: 30px;
+  width: 30px;
+}
+.iconHistorialOrder {
+  height: 20px;
+  width: 20px;
+  margin: 1px;
+}
+.buttonSendOrden {
+  background-color: #67a50d;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 900;
+  margin: 5px;
+  height: 70px;
+  width: 130px;
+}
+.buttonhistorialOrder {
+  background-color: #67a50d;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 900;
+  margin: 5px;
+  height: 70px;
+  width: 130px;
+}
+.buttonSendOrden:hover {
+  background-color: #7fba27;
+}
+.buttonhistorialOrder:hover {
+  background-color: #7fba27;
 }
