@@ -57,3 +57,37 @@ export const ProductsApi = async (): Promise<Products[]> => {
     throw error;
   }
 };
+//-------------------------Orders-----------------------------------
+
+export interface Orders {
+  id: number;
+  userId: number;
+  client: string;
+  products: [];
+  status: string;
+  dataEntry: string;
+}
+
+export const OrdersApi = async (): Promise<Orders[]> => {
+  try {
+    const token = loadLocalStorage<string>("token");
+    console.log(token);
+    const response = await fetch(`http://localhost:8080/orders`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: "Bearer " + token,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const orders: Orders[] = await response.json();
+    return orders;
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    throw error;
+  }
+};
