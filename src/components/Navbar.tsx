@@ -1,5 +1,6 @@
 import styles from "./Navbar.module.css";
 import { GiQueenCrown } from "react-icons/gi";
+
 export function Navbar() {
   return (
     <nav className={styles.navBar}>
