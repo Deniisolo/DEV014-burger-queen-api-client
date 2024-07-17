@@ -64,3 +64,8 @@
 .buttonhistorialOrder:hover {
   background-color: #7fba27;
 }
+.inputName {
+  border-radius: 10px;
+  height: 40px;
+  width: 130px;
+}

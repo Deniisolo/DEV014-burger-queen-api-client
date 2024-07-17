@@ -1,24 +1,38 @@
-import "./Ordersview.module.css";
+import styles from "./Ordersview.module.css";
 import { Navbar } from "../Navbar";
 import { OrdersApi } from "../../services/APIService";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export interface Orders {
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  image: string;
+  type: string;
+  dateEntry: string;
+}
+
+interface OrderProduct {
+  qty: number;
+  product: Product;
+}
+
+interface Orders {
   id: number;
   userId: number;
   client: string;
-  products: [];
+  products: OrderProduct[];
   status: string;
-  dataEntry: string;
+  dataEntry?: string;
 }
+
 export function Ordersview() {
   const [orders, setOrders] = useState<Orders[]>([]);
+
   useEffect(() => {
     const getOrders = async () => {
-      const allOrdes: Orders[] = await OrdersApi();
-      console.log(allOrdes);
-      setOrders(allOrdes);
+      const allOrders = await OrdersApi();
+      setOrders(allOrders);
     };
     getOrders();
   }, []);
@@ -28,16 +42,42 @@ export function Ordersview() {
       <header>
         <Navbar />
       </header>
-      <main>
+      <main className={styles.container}>
         <h3>Historial de pedidos</h3>
-        {orders.map((order) => (
-          <div key={order.id}>
-            <p>{order.client}</p>
-            {/* //me falta poder mostrar los datos de lo productos */}
-            <p>{order.status}</p>
-            <p>{order.dataEntry}</p>
-          </div>
-        ))}
+        {orders.map((order) => {
+          const formattedDate = order.dataEntry
+            ? order.dataEntry.replace(" ", "T")
+            : "";
+
+          return (
+            <div key={order.id} className={styles.orderCard}>
+              <div className={styles.orderInfo}>
+                <p>Cliente: {order.client}</p>
+                <p>Estado: {order.status}</p>
+                <p>
+                  Fecha de creación:{" "}
+                  {formattedDate
+                    ? new Date(formattedDate).toLocaleString()
+                    : "Fecha no disponible"}
+                </p>
+              </div>
+              <div className={styles.productList}>
+                <h4>Productos:</h4>
+                {order.products.map((item, index) => (
+                  <div key={index} className={styles.product}>
+                    <p className={styles.productName}>
+                      Producto: {item.product.name}
+                    </p>
+                    <p>Cantidad: {item.qty}</p>
+                    <p className={styles.productPrice}>
+                      Precio: ${item.product.price}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })}
       </main>
     </>
   );

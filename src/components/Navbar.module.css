@@ -9,7 +9,7 @@
 }
 .navBar {
   display: flex;
-  gap: 200px;
+  gap: 120px;
   background-color: #fed11e;
 }
 .navBarOne {
