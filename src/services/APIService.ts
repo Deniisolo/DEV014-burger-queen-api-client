@@ -90,3 +90,29 @@ export const OrdersApi = async (): Promise<Orders[]> => {
     throw error;
   }
 };
+//--------------------------------- historial de order ------------------------------------------------
+export const createOrder = async (clientName: string, products: any[]) => {
+  try {
+    const data = {
+      client: clientName,
+      products: products,
+      status: "pending",
+    };
+    const token = loadLocalStorage<string>("token");
+    const response = await fetch(`http://localhost:8080/orders`, {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+        authorization: "Bearer " + token,
+      },
+    });
+    if (!response.ok) {
+      throw new Error("Error creating order");
+    }
+    return response.json();
+  } catch (error) {
+    console.error("Error creating order:", error);
+    throw error;
+  }
+};

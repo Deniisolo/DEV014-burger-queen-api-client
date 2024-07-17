@@ -7,9 +7,6 @@ export function Roleanduser() {
         <MdOutlineTableRestaurant className={styles.icon} />
         <h3 className={styles.h3}>Mesero</h3>
       </section>
-      <section className={styles.sectionTwo}>
-        <p className={styles.p}> Nombre del cliente:</p>
-      </section>
     </section>
   );
 }
