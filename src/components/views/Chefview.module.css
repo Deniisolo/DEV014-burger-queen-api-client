@@ -8,8 +8,8 @@ header {
 }
 
 h3 {
-  text-align: center;
   margin-bottom: 20px;
+  font-size: 30px;
 }
 
 .orderCard {
@@ -43,6 +43,7 @@ h3 {
 }
 
 .productPrice {
+  display: none;
   color: #555;
 }
 .button {
@@ -59,7 +60,6 @@ h3 {
   border-radius: 8px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   font-weight: 900;
-  margin-top: 60px;
 }
 
 .button:hover {
